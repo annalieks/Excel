@@ -79,7 +79,14 @@ namespace Excel
 
         public override int VisitUnaryExpr([NotNull] CalculatorParser.UnaryExprContext context)
         {
-            var result = int.Parse(context.GetText());
+            var result = WalkLeft(context);
+
+            if(context.operatorToken.Type == CalculatorLexer.MINUS)
+            {
+                Debug.WriteLine("-{0}", result);
+                return -result;
+            }
+            Debug.WriteLine("{0}", result);
             return result;
         }
 

@@ -121,7 +121,7 @@
             // 
             this.addColumnBtn.BackColor = System.Drawing.SystemColors.Control;
             this.addColumnBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.addColumnBtn.Location = new System.Drawing.Point(1192, 17);
+            this.addColumnBtn.Location = new System.Drawing.Point(1189, 16);
             this.addColumnBtn.Name = "addColumnBtn";
             this.addColumnBtn.Size = new System.Drawing.Size(42, 34);
             this.addColumnBtn.TabIndex = 5;
@@ -133,7 +133,7 @@
             // 
             this.deleteColumnBtn.BackColor = System.Drawing.SystemColors.Control;
             this.deleteColumnBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.deleteColumnBtn.Location = new System.Drawing.Point(1240, 17);
+            this.deleteColumnBtn.Location = new System.Drawing.Point(1237, 17);
             this.deleteColumnBtn.Name = "deleteColumnBtn";
             this.deleteColumnBtn.Size = new System.Drawing.Size(43, 34);
             this.deleteColumnBtn.TabIndex = 6;
@@ -146,7 +146,7 @@
             this.deleteRowBtn.BackColor = System.Drawing.SystemColors.Control;
             this.deleteRowBtn.Font = new System.Drawing.Font("Yu Gothic UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.deleteRowBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.deleteRowBtn.Location = new System.Drawing.Point(1016, 17);
+            this.deleteRowBtn.Location = new System.Drawing.Point(995, 16);
             this.deleteRowBtn.Name = "deleteRowBtn";
             this.deleteRowBtn.Size = new System.Drawing.Size(43, 34);
             this.deleteRowBtn.TabIndex = 6;
@@ -159,7 +159,7 @@
             this.addRowBtn.BackColor = System.Drawing.SystemColors.Control;
             this.addRowBtn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addRowBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.addRowBtn.Location = new System.Drawing.Point(968, 17);
+            this.addRowBtn.Location = new System.Drawing.Point(947, 16);
             this.addRowBtn.Name = "addRowBtn";
             this.addRowBtn.Size = new System.Drawing.Size(42, 34);
             this.addRowBtn.TabIndex = 5;
@@ -171,21 +171,21 @@
             // 
             this.columnsLabel.AutoSize = true;
             this.columnsLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.columnsLabel.Location = new System.Drawing.Point(1089, 17);
+            this.columnsLabel.Location = new System.Drawing.Point(1060, 18);
             this.columnsLabel.Name = "columnsLabel";
-            this.columnsLabel.Size = new System.Drawing.Size(97, 30);
+            this.columnsLabel.Size = new System.Drawing.Size(123, 30);
             this.columnsLabel.TabIndex = 4;
-            this.columnsLabel.Text = "Columns";
+            this.columnsLabel.Text = "Стовпчики";
             // 
             // rowsLabel
             // 
             this.rowsLabel.AutoSize = true;
             this.rowsLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rowsLabel.Location = new System.Drawing.Point(899, 17);
+            this.rowsLabel.Location = new System.Drawing.Point(869, 18);
             this.rowsLabel.Name = "rowsLabel";
-            this.rowsLabel.Size = new System.Drawing.Size(63, 30);
+            this.rowsLabel.Size = new System.Drawing.Size(72, 30);
             this.rowsLabel.TabIndex = 3;
-            this.rowsLabel.Text = "Rows";
+            this.rowsLabel.Text = "Рядки";
             // 
             // enterBtn
             // 
