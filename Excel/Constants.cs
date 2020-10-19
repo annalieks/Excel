@@ -1,7 +1,7 @@
 ﻿
 namespace Excel
 {
-    static class Constants
+    public static class Constants
     {
         public const string HelpMsg = "Привіт!\n" +
             "Даний застосунок є аналогом Excel, " +

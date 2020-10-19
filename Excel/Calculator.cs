@@ -5,7 +5,7 @@ namespace Excel
 {
     public class Calculator
     {
-        public static int Evaluate(string expression)
+        public static double Evaluate(string expression)
         {
             var lexer = new CalculatorLexer(new AntlrInputStream(expression));
             lexer.RemoveErrorListeners();

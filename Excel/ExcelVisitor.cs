@@ -9,47 +9,36 @@ using Excel.Grammar;
 
 namespace Excel
 {
-    class ExcelVisitor : CalculatorBaseVisitor<int>
+    class ExcelVisitor : CalculatorBaseVisitor<double>
     {
-        private Dictionary<string, int> tableIdentifier = new Dictionary<string, int>();
-
-        public override int VisitCompileUnit(CalculatorParser.CompileUnitContext context)
+        public override double VisitCompileUnit(CalculatorParser.CompileUnitContext context)
         {
             return Visit(context.expression());
         }
 
-        public override int VisitNumberExpr(CalculatorParser.NumberExprContext context)
+        public override double VisitNumberExpr(CalculatorParser.NumberExprContext context)
         {
-            var result = int.Parse(context.GetText());
+            var result = double.Parse(context.GetText());
             Debug.WriteLine(result);
 
             return result;
         }
 
-        public override int VisitIdentifierExpr(CalculatorParser.IdentifierExprContext context)
-        {
-            var result = context.GetText();
-            int value;
-            return (tableIdentifier.TryGetValue(result, out value)) 
-                ? value 
-                : 0;
-        }
-
-        public override int VisitParenthesizedExpr(CalculatorParser.ParenthesizedExprContext context)
+        public override double VisitParenthesizedExpr(CalculatorParser.ParenthesizedExprContext context)
         {
             return Visit(context.expression());
         }
 
-        public override int VisitExponentialExpr(CalculatorParser.ExponentialExprContext context)
+        public override double VisitExponentialExpr(CalculatorParser.ExponentialExprContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
             
             Debug.WriteLine("{0} ^ {1}", left, right);
-            return (int)System.Math.Pow(left, right);
+            return System.Math.Pow(left, right);
         }
 
-        public override int VisitAdditiveExpr(CalculatorParser.AdditiveExprContext context)
+        public override double VisitAdditiveExpr(CalculatorParser.AdditiveExprContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -63,7 +52,7 @@ namespace Excel
             return left - right;
         }
 
-        public override int VisitMultiplicativeExpr(CalculatorParser.MultiplicativeExprContext context)
+        public override double VisitMultiplicativeExpr(CalculatorParser.MultiplicativeExprContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
@@ -77,7 +66,7 @@ namespace Excel
             return left / right;
         }
 
-        public override int VisitUnaryExpr([NotNull] CalculatorParser.UnaryExprContext context)
+        public override double VisitUnaryExpr([NotNull] CalculatorParser.UnaryExprContext context)
         {
             var result = WalkLeft(context);
 
@@ -90,22 +79,22 @@ namespace Excel
             return result;
         }
 
-        public override int VisitModDivExpr([NotNull] CalculatorParser.ModDivExprContext context)
+        public override double VisitModDivExpr([NotNull] CalculatorParser.ModDivExprContext context)
         {
             var left = WalkLeft(context);
             var right = WalkRight(context);
 
             return context.operatorToken.Type == CalculatorLexer.MOD
                 ? left % right
-                : left / right;
+                : (int)left / (int)right;
         }
 
-        private int WalkLeft(CalculatorParser.ExpressionContext context)
+        private double WalkLeft(CalculatorParser.ExpressionContext context)
         {
             return Visit(context.GetRuleContext<CalculatorParser.ExpressionContext>(0));
         }
         
-        private int WalkRight(CalculatorParser.ExpressionContext context)
+        private double WalkRight(CalculatorParser.ExpressionContext context)
         {
             return Visit(context.GetRuleContext<CalculatorParser.ExpressionContext>(1));
         }

@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Excel
 {
-    class Position
+    public class Position
     {
         public int Row;
         public int Column;
@@ -31,6 +31,7 @@ namespace Excel
                 Column = Utils.ConvertToNumberFromColumn(columnMatch);
             }
             catch { }
+            Name = name;
         }
     }
 }

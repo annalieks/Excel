@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Excel
 {
-    class Table
+    public class Table
     {
         private int rows = 20;
         private int columns = 10;
@@ -147,9 +147,9 @@ namespace Excel
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    streamWriter.Write(data[i][j].Empty 
+                    streamWriter.Write(data[i][j].Empty
                         ? "e"
-                        : data[i][j].Value.ToString());
+                        : data[i][j].Expression);
                     if(j == columns - 1 && i != rows - 1)
                     {
                         streamWriter.Write("\n");
@@ -189,12 +189,23 @@ namespace Excel
                     var cell = new Cell(tableContainer, i, j);
                     if(line[j] != "e")
                     {
-                        cell.Value = Int32.Parse(line[j]);
-                        cell.Expression = cell.Value.ToString();
+                        cell.Expression = line[j];
                     }
                         
                     cellsRow.Add(cell);
                 }
+                foreach(var row in data)
+                {
+                    foreach(var cell in row)
+                    {
+                        if (cell.Expression != null)
+                        {
+                            string expression = ReplaceRefs(cell.Expression);
+                            cell.Calculate(expression);
+                        }
+                    }
+                }
+
 
                 data[i] = (cellsRow);
             }

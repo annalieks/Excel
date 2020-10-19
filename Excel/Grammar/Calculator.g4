@@ -13,17 +13,16 @@ expression :
     | expression operatorToken=(MULTIPLY | DIVIDE) expression #MultiplicativeExpr
     | expression operatorToken=(PLUS | MINUS) expression #AdditiveExpr
     | operatorToken=(MOD | DIV) LPAREN expression SEP expression RPAREN #ModDivExpr
-    | INT #NumberExpr
-    | IDENTIFIER #IdentifierExpr
+    | NUMBER #NumberExpr
     ;
 /*
 * Lexer Rules
 */
-
+NUMBER: INT('.'INT)?;
 INT : ('0'..'9')+;
 EXPONENT : '^';
 MULTIPLY : '*';
-DIVIDE : ';';
+DIVIDE : '/';
 LPAREN : '(';
 RPAREN : ')';
 MINUS : '-';

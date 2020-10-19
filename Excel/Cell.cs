@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace Excel
 {
-    class Cell
+    public class Cell
     {
-        private int cellValue;
+        private double cellValue;
         public bool Empty { get; set; }
-        public int Value {
+        public double Value {
             get
             {
                 return cellValue;
