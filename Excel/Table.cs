@@ -73,7 +73,7 @@ namespace Excel
             var cell = GetCell(row, column);
             var refs = ExtractRefs(expression);
             DeleteDependencies(cell, refs);
-            foreach(var reference in refs)
+            foreach (var reference in refs)
             {
                 var c = GetCell(reference.Row, reference.Column);
                 if (c == null)
@@ -86,9 +86,15 @@ namespace Excel
             cell.Expression = expression;
             cell.Calculate(ReplaceRefs(expression));
             if (expression == "")
+            {
                 tableContainer[cell.Position.Column, cell.Position.Row].Value = "";
-
-            RefreshDependencies(cell);
+                cell.Empty = true;
+            }
+            else
+            {
+                cell.Empty = false;
+            }
+                RefreshDependencies(cell);
         }
 
         public void RefreshDependencies(Cell cell)
